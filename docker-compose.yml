@@ -1,0 +1,32 @@
+services:
+  argo:
+    build: .
+    container_name: ${COMPOSE_PROJECT_NAME}-ArgoTool
+    restart: unless-stopped
+    environment:
+      - ADMIN_CHAT_ID=${ADMIN_CHAT_ID}
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+    networks:
+      - bot_network
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    ipc: host 
+    shm_size: '1gb' 
+    init: true
+    security_opt:
+      - seccomp=./seccomp_profile.json 
+
+    volumes:
+      - ./logs:/app/logs
+      - sqlite_data:/app/data
+
+volumes:
+  sqlite_data:
+    name: ${COMPOSE_PROJECT_NAME}-sqlite-data
+    driver: local
+
+networks:
+  bot_network:
+    name: ${COMPOSE_PROJECT_NAME}-network
+    driver: bridge

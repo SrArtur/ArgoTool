@@ -1,0 +1,34 @@
+ # Git
+ .git
+ .gitignore
+ 
+ # Archivos de entorno
+ .env
+ *.env
+ 
+ # Entornos virtuales de Python
+ .venv
+ venv
+ env/
+ 
+ # Archivos y carpetas de Python
+ __pycache__/
+ *.pyc
+ *.pyo
+ *.pyd
+ 
+ # Archivos de log
+ *.log
+ smartgrid.log
+ 
+ # Carpetas de test y configuración de IDE
+ .pytest_cache/
+ .vscode/
+ .idea/
+ 
+ # Archivos de sistema operativo
+ .DS_Store
+ Thumbs.db
+
+# SQLite database file
+*.db
